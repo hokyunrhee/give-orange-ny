@@ -4,7 +4,7 @@ const SITE_NAME = '쇼미더기부';
 const SITE_TITLE = '쇼미더기부';
 const SITE_DESCRIPTION = '나와 맞는 기부 방법을 알아보는 기부 성향 테스트';
 const SITE_IMAGE = '/og.jpg';
-const DOMAIN = '';
+const DOMAIN = 'https://givorange.vercel.app';
 
 class MyDocument extends Document {
   render() {

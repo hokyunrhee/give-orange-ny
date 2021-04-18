@@ -1,4 +1,4 @@
-# 기부 성향 MBTI 테스트 쇼미더기부
+# 기부 성향 MBTI 테스트 [쇼미더기부](https://givorange.vercel.app)
 
 유학생 비영리 단체 [Give Orange New York](https://www.givorange.com/)에서 진행하는 프로젝트의 일환으로 도움을 부탁 받아 제작했습니다.
 
