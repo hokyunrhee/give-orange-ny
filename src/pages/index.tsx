@@ -80,7 +80,14 @@ export default function Home({ questions }: Props) {
         </div>
       )}
 
-      <div className="flex-grow flex items-center" ref={slideRef}>
+      <div
+        className={`flex-grow flex items-center ${
+          slide > 1 &&
+          slide <= questions.length &&
+          `transition duration-500 ease-in-out`
+        }`}
+        ref={slideRef}
+      >
         <Main onClick={moveToNext} />
 
         {questions.map((item) => (
