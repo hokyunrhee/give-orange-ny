@@ -40,8 +40,8 @@ const Slide: React.FC<Props> = ({
 
   return (
     <div className="flex-shrink-0 w-full flex flex-col">
-      <div className="my-auto">
-        <p className="text-center font-bold text-[24px] px-4 min-h-[108px]">
+      <div className="mx-auto w-[330px]">
+        <p className="text-center font-bold text-[24px] min-h-[108px]">
           {item.question}
         </p>
 

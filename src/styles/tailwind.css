@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+html,
+body {
   font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -11,4 +12,18 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.character {
+  width: 184px;
+  height: 184px;
+  background: url('/images/animation.png');
+  background-size: 736px 184px;
+  animation: move 0.5s steps(4) infinite;
+}
+
+@keyframes move {
+  100% {
+    background-position: -736px;
+  }
 }

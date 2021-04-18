@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 
 interface Props {
   current: number;
@@ -8,7 +8,7 @@ interface Props {
 const Progressbar: React.FC<Props> = ({ current, total }) => {
   const progressRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (current > total || !progressRef.current) return;
     progressRef.current.style.width = `${(current / total) * 100}%`;
   }, [current, total]);

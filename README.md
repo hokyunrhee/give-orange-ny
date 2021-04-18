@@ -1,8 +1,7 @@
-# Next.js With Typescript
+# 기부 성향 MBTI 테스트 쇼미더기부
 
-Typescript로 진행하는 Next.js 프로젝트의 예시입니다.
+유학생 비영리 단체 [Give Orange New York](https://www.givorange.com/)에서 진행하는 프로젝트의 일환으로 도움을 부탁 받아 제작했습니다.
 
-최소한의 코드 품질과 일관된 코드 스타일을 보장하기 위하여 다음의 내용이 셋팅되어 있습니다.
+Give Orange는 현재 미국 뉴욕 지역에서 유학생들이 주축이 되어 운영하는 기부단체입니다. 매 학기마다 한국에 있는 뜻깊은 사회적 기업을 선정하여 유학생들과 현지 교민들을 대상으로 후원 및 브랜드 홍보 프로젝트를 진행하고 있습니다.
 
-- eslint, prettier
-- husky, lint-staged
+취지에 공감하여 재능기부 형태로 진행했습니다.

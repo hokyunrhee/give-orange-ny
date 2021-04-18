@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useLayoutEffect, useEffect, useRef } from 'react';
 
 import { useRouter } from 'next/router';
 
 import Main from 'src/components/template/Main';
 import Slide from 'src/components/template/Slide';
+import Loading from 'src/components/template/Loading';
 import Progressbar from 'src/components/atom/Progressbar';
 
 import { Item } from 'src/types';
@@ -11,7 +12,7 @@ import { Item } from 'src/types';
 import fs from 'fs';
 import path from 'path';
 
-const MBTI_TYPES = {
+const MBTI_TYPES: { [type: string]: number } = {
   ISTJ: 1,
   ISFJ: 2,
   INFJ: 3,
@@ -47,25 +48,39 @@ export default function Home({ questions }: Props) {
     setSlide((prev) => prev + 1);
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!slideRef.current) return;
     slideRef.current.style.transform = `translateX(-${slide}00%)`;
   }, [slide]);
 
+  useEffect(() => {
+    let id: number;
+    if (slide > questions.length) {
+      id = window.setTimeout(() => {
+        const { EI, SN, TF, JP } = mbti;
+
+        const result = `${EI >= 2 ? 'E' : 'I'}${SN >= 2 ? 'S' : 'N'}${
+          TF >= 2 ? 'T' : 'F'
+        }${JP >= 2 ? 'J' : 'P'}`;
+
+        const type = MBTI_TYPES[result];
+        router.push(`report/${type}`);
+      }, 2000);
+    }
+    return () => clearTimeout(id);
+  }, [mbti, questions.length, router, slide]);
+
   return (
     <div className="relative flex-grow flex flex-col justify-center overflow-x-hidden">
       {slide > 0 && slide <= questions.length && (
-        <div className="absolute top-20 left-0 right-0">
+        <div className="my-20">
           <div className="w-[330px] mx-auto">
             <Progressbar current={slide} total={questions.length} />
           </div>
         </div>
       )}
 
-      <div
-        className="flex-grow flex items-center transition duration-500 ease-in-out"
-        ref={slideRef}
-      >
+      <div className="flex-grow flex items-center" ref={slideRef}>
         <Main onClick={moveToNext} />
 
         {questions.map((item) => (
@@ -77,6 +92,8 @@ export default function Home({ questions }: Props) {
             setMbti={setMbti}
           />
         ))}
+
+        <Loading />
       </div>
     </div>
   );
