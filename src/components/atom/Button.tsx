@@ -14,7 +14,7 @@ const Button: React.FC<Props> = ({
   return (
     <button
       onClick={onClick}
-      className={`w-[330px] h-[80px] p-8 flex justify-center items-center text-sm focus:outline-none ${className}`}
+      className={`max-w-[320px] w-full h-[80px] p-8 flex justify-center items-center text-sm focus:outline-none ${className}`}
       {...props}
     >
       {children}

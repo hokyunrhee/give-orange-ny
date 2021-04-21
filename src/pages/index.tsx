@@ -74,7 +74,7 @@ export default function Home({ questions }: Props) {
     <div className="relative flex-grow flex flex-col justify-center overflow-x-hidden">
       {slide > 0 && slide <= questions.length && (
         <div className="my-20">
-          <div className="w-[330px] mx-auto">
+          <div className="w-[320px] mx-auto">
             <Progressbar current={slide} total={questions.length} />
           </div>
         </div>

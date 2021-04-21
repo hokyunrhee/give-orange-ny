@@ -31,8 +31,11 @@ const Result = ({ profile }: Props) => {
 
   return (
     <div className="relative flex-grow flex flex-col items-center">
-      <section className="w-[330px]">
-        <div className="flex mt-[80px] justify-center">
+      <section className="w-[320px]">
+        <h2 className="font-bold text-center text-[24px] mt-11">
+          당신의 기부 성향은...
+        </h2>
+        <div className="flex justify-center">
           <img
             className="w-[300px] h-[300px]"
             src={`/images/${profile.no}.png`}
@@ -53,7 +56,7 @@ const Result = ({ profile }: Props) => {
 
         <div className="flex">
           <div className="w-1/2 text-center">
-            <p className="font-bold">환상의 기부 짝궁</p>
+            <p className="font-bold">환상의 기부 짝꿍</p>
             <div className="flex justify-center">
               <img
                 className="w-[156px] h-[156px]"
@@ -67,7 +70,7 @@ const Result = ({ profile }: Props) => {
             </div>
           </div>
           <div className="w-1/2 text-center">
-            <p className="font-bold">환장의 기부 짝궁</p>
+            <p className="font-bold">환장의 기부 짝꿍</p>
             <div className="flex justify-center">
               <img
                 className="w-[156px] h-[156px]"
@@ -82,15 +85,7 @@ const Result = ({ profile }: Props) => {
           </div>
         </div>
 
-        <div className="my-16">
-          <p className="text-sm font-bold text-center">
-            {
-              '해당 기부 성향 MBTI 테스트 "쇼미더기부"는 선진 기부 문화 정착을 목표로 하는 유학생 비영리 단체 Give Orange New York에서 제작한 테스트입니다.'
-            }
-          </p>
-        </div>
-
-        <div className="mb-16">
+        <div className="my-11">
           <p className="text-lg font-bold text-center mb-4">결과 공유하기</p>
           <div className="space-y-4">
             <CopyToClipboard text={currentUrl} onCopy={clickShare}>
@@ -104,7 +99,23 @@ const Result = ({ profile }: Props) => {
             >
               다시하기
             </Button>
+            <a
+              href="https://www.instagram.com/givo.newyork/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="max-w-[320px] w-full h-[80px] p-8 flex justify-center items-center text-sm focus:outline-none mx-auto border border-PRIMARY text-GRAY hover:bg-PRIMARY hover:text-WHITE active:bg-PRIMARY active:text-WHITE transition duration-100 ease-in-out"
+            >
+              GIV.O Instagram
+            </a>
           </div>
+        </div>
+
+        <div className="mb-11">
+          <p className="text-sm font-bold text-center">
+            {
+              '해당 기부 성향 MBTI 테스트 "쇼미더기부"는 선진 기부 문화 정착을 목표로 하는 유학생 비영리 단체 Give Orange New York에서 제작한 테스트입니다.'
+            }
+          </p>
         </div>
       </section>
     </div>

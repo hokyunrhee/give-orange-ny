@@ -15,15 +15,15 @@ body {
 }
 
 .character {
-  width: 184px;
-  height: 184px;
+  width: 140px;
+  height: 140px;
   background: url('/images/animation.png');
-  background-size: 736px 184px;
+  background-size: 560px 140px;
   animation: move 0.5s steps(4) infinite;
 }
 
 @keyframes move {
   100% {
-    background-position: -736px;
+    background-position: -560px;
   }
 }
