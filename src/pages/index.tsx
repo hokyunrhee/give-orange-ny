@@ -1,5 +1,6 @@
 import React, { useState, useLayoutEffect, useEffect, useRef } from 'react';
 
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import Main from 'src/components/template/Main';
@@ -13,22 +14,22 @@ import fs from 'fs';
 import path from 'path';
 
 const MBTI_TYPES: { [type: string]: number } = {
-  ISTJ: 1,
-  ISFJ: 2,
-  INFJ: 3,
-  INTJ: 4,
-  ISTP: 5,
-  ISFP: 6,
-  INFP: 7,
-  INTP: 8,
-  ESTP: 9,
-  ESFP: 10,
-  ENFP: 11,
-  ENTP: 12,
-  ESTJ: 13,
-  ESFJ: 14,
-  ENFJ: 15,
-  ENTJ: 16,
+  ESTJ: 1,
+  ESTP: 2,
+  ESFJ: 3,
+  ESFP: 4,
+  ENFJ: 5,
+  ENFP: 6,
+  ENTJ: 7,
+  ENTP: 8,
+  ISTJ: 9,
+  ISTP: 10,
+  ISFJ: 11,
+  ISFP: 12,
+  INFJ: 13,
+  INFP: 14,
+  INTJ: 15,
+  INTP: 16,
 };
 
 interface Props {
@@ -71,38 +72,43 @@ export default function Home({ questions }: Props) {
   }, [mbti, questions.length, router, slide]);
 
   return (
-    <div className="relative flex-grow flex flex-col justify-center overflow-x-hidden">
-      {slide > 0 && slide <= questions.length && (
-        <div className="my-20">
-          <div className="w-[320px] mx-auto">
-            <Progressbar current={slide} total={questions.length} />
+    <>
+      <Head>
+        <title>{`기부 성향 테스트`}</title>
+      </Head>
+      <div className="relative flex-grow flex flex-col justify-center overflow-x-hidden">
+        {slide > 0 && slide <= questions.length && (
+          <div className="my-20">
+            <div className="w-[320px] mx-auto">
+              <Progressbar current={slide} total={questions.length} />
+            </div>
           </div>
+        )}
+
+        <div
+          className={`flex-grow flex items-center ${
+            slide > 1 &&
+            slide <= questions.length &&
+            `transition duration-500 ease-in-out`
+          }`}
+          ref={slideRef}
+        >
+          <Main onClick={moveToNext} />
+
+          {questions.map((item) => (
+            <Slide
+              key={item.no}
+              item={item}
+              onClick={moveToNext}
+              mbti={mbti}
+              setMbti={setMbti}
+            />
+          ))}
+
+          <Loading />
         </div>
-      )}
-
-      <div
-        className={`flex-grow flex items-center ${
-          slide > 1 &&
-          slide <= questions.length &&
-          `transition duration-500 ease-in-out`
-        }`}
-        ref={slideRef}
-      >
-        <Main onClick={moveToNext} />
-
-        {questions.map((item) => (
-          <Slide
-            key={item.no}
-            item={item}
-            onClick={moveToNext}
-            mbti={mbti}
-            setMbti={setMbti}
-          />
-        ))}
-
-        <Loading />
       </div>
-    </div>
+    </>
   );
 }
 
